@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#fff1f5"
+    >
+
+    <meta
+        name="description"
+        content="Một món quà nhỏ lưu giữ những kỷ niệm đáng yêu dành riêng cho em."
+    >
+
+    <title>Love Letter | Ghép lại kỷ niệm</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"
+            }
+        }
+    </script>
+
+    <script src="component-loader.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================================================
+         1. MÀN HÌNH CHÀO
+    =================================================== -->
+
+    <section
+        class="welcome-screen"
+        id="welcomeScreen"
+        aria-labelledby="welcomeTitle"
+    >
+        <div
+            class="welcome-decoration welcome-decoration-left"
+            aria-hidden="true"
+        >♡</div>
+
+        <div
+            class="welcome-decoration welcome-decoration-right"
+            aria-hidden="true"
+        >♡</div>
+
+        <div class="welcome-card">
+
+            <div
+                class="welcome-heart"
+                aria-hidden="true"
+            >♥</div>
+
+            <span class="welcome-subtitle">
+                A LITTLE SURPRISE FOR YOU
+            </span>
+
+            <h1 id="welcomeTitle">
+                Chào mừng em đến với
+                <span>điều kỳ thú sắp tới ❤️</span>
+            </h1>
+
+            <p class="welcome-description">
+                Anh đã chuẩn bị một món quà nho nhỏ dành riêng cho em.
+
+                Phía trước là những mảnh ghép, những bức ảnh
+                và những kỷ niệm đáng yêu.
+
+                <br><br>
+
+                <strong>Em đã sẵn sàng khám phá chưa?</strong>
+            </p>
+
+            <button
+                type="button"
+                id="startExperience"
+                class="welcome-button"
+            >
+                Ấn vô
+                <span aria-hidden="true">♡</span>
+            </button>
+<br>
+            <div class="welcome-footer">
+                <span aria-hidden="true">✦</span>
+                Một điều đặc biệt đang chờ em
+                <span aria-hidden="true">✦</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================================================
+         2. NỘI DUNG CHÍNH
+    =================================================== -->
+
+    <main class="page" id="mainPage">
+
+        <header class="page-header">
+
+            <span class="eyebrow">
+                A LITTLE GIFT FOR YOU
+            </span>
+
+            <h1>
+                Our Little Memories
+                <span aria-hidden="true">♡</span>
+            </h1>
+
+            <p>
+                Một món quà nhỏ, dành riêng cho em.
+            </p>
+
+        </header>
+
+
+        <!-- ==================================================
+             3. TRÌNH PHÁT NHẠC
+        =================================================== -->
+
+        <section
+            class="music-player"
+            aria-label="Trình phát nhạc"
+        >
+
+            <audio
+                id="backgroundMusic"
+                loop
+                preload="auto"
+            >
+                <source
+                    src="music.mp3"
+                    type="audio/mpeg"
+                >
+
+                Trình duyệt không hỗ trợ phát nhạc.
+            </audio>
+
+            <button
+                type="button"
+                id="toggleMusic"
+                class="music-button"
+                aria-label="Bật nhạc"
+                aria-pressed="false"
+            >
+                <span
+                    id="musicIcon"
+                    aria-hidden="true"
+                >♫</span>
+            </button>
+
+            <div class="music-details">
+
+                <span class="music-label">
+                    NOW PLAYING
+                </span>
+
+                <strong>Our Love Song</strong>
+
+                <span
+                    id="musicStatus"
+                    aria-live="polite"
+                >
+                    Nhấn Khám phá ngay để bắt đầu
+                </span>
+
+            </div>
+
+            <span
+                class="music-note"
+                aria-hidden="true"
+            >♪</span>
+
+        </section>
+
+
+        <!-- ==================================================
+             4. TRÒ CHƠI GHÉP ẢNH
+             5 ảnh, mỗi ảnh gồm 16 mảnh
+        =================================================== -->
+
+        <section
+            class="puzzle-section"
+            id="puzzleSection"
+            aria-labelledby="puzzleTitle"
+        >
+
+            <div class="section-heading">
+
+                <span
+                    class="section-number"
+                    id="levelText"
+                >
+                    01 / OUR MEMORY
+                </span>
+
+                <h2 id="puzzleTitle">
+                    Ghép lại kỷ niệm
+                    <span aria-hidden="true">♡</span>
+                </h2>
+
+                <p id="levelDescription">
+                    Hãy ghép 16 mảnh ảnh về đúng vị trí
+                    để khám phá những kỷ niệm tiếp theo nhé!
+                </p>
+
+            </div>
+
+
+            <div
+                class="puzzle-layout"
+                id="puzzleLayout"
+            >
+
+                <!-- Bàn ghép ảnh -->
+
+                <div class="puzzle-frame">
+
+                    <div
+                        id="puzzleBoard"
+                        class="puzzle-board"
+                        role="group"
+                        aria-label="Bàn chơi ghép ảnh gồm 16 mảnh"
+                    ></div>
+
+                </div>
+
+
+                <!-- Thông tin trò chơi -->
+
+                <aside
+                    class="puzzle-info"
+                    aria-label="Thông tin màn chơi"
+                >
+
+                    <div class="level-counter">
+
+                        <span>MÀN CHƠI</span>
+
+                        <strong id="levelCounter">
+                            01 / 05
+                        </strong>
+
+                    </div>
+
+
+                    <div class="level-details">
+
+                        <span>Độ khó hiện tại</span>
+
+                        <strong id="difficultyText">
+                            4 × 4 · 16 mảnh
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Trạng thái -->
+
+                    <p
+                        class="puzzle-status"
+                        id="puzzleStatus"
+                        aria-live="polite"
+                    >
+                        Mỗi mảnh ghép là một phần kỷ niệm. ♡
+                    </p>
+
+
+                    <!-- Xáo trộn -->
+
+                    <button
+                        type="button"
+                        id="shufflePuzzle"
+                        class="primary-button"
+                    >
+                        <span aria-hidden="true">⟳</span>
+                        Xáo trộn ảnh
+                    </button>
+
+
+                    <!-- Hướng dẫn -->
+
+                    <div class="puzzle-tip">
+
+                        <span aria-hidden="true">💗</span>
+
+                        <p>
+                            Chọn một mảnh rồi chọn mảnh thứ hai
+                            để đổi vị trí. Em cũng có thể kéo thả
+                            các mảnh trên máy tính.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+
+            <!-- ==================================================
+                 5. MÀN HOÀN THÀNH MỘT ẢNH
+            =================================================== -->
+
+            <section
+                class="success-message"
+                id="successMessage"
+                aria-labelledby="successTitle"
+                aria-live="polite"
+                hidden
+            >
+
+                <div class="thank-you-card">
+
+                    <span
+                        class="success-heart"
+                        aria-hidden="true"
+                    >♥</span>
+
+                    <span class="eyebrow">
+                        A LITTLE MEMORY FOR YOU
+                    </span>
+
+                    <h3 id="successTitle">
+                        Em đã ghép hoàn thành! ❤️
+                    </h3>
+
+                    <p id="successText">
+                        Một kỷ niệm nữa đã được ghép lại.
+                        Hãy tiếp tục khám phá những bức ảnh tiếp theo nhé!
+                    </p>
+
+
+                    <div class="final-photo-wrapper">
+
+                        <img
+                            id="finalPhoto"
+                            class="final-photo"
+                            src=""
+                            alt="Bức ảnh kỷ niệm hoàn chỉnh"
+                            loading="eager"
+                        >
+
+                    </div>
+
+
+                    <p class="final-message">
+                        <span aria-hidden="true">♡</span>
+
+                        Những kỷ niệm đẹp luôn xứng đáng được trân trọng.
+
+                        <span aria-hidden="true">♡</span>
+                    </p>
+
+
+                    <button
+                        type="button"
+                        id="playAgain"
+                        class="secondary-button"
+                    >
+                        Ghép ảnh tiếp theo →
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==================================================
+             6. MÀN CHÚC MỪNG 20/10
+             heart.html cung cấp giao diện trái tim 3D
+        =================================================== -->
+
+        <section
+            class="october-celebration"
+            id="octoberCelebration"
+            aria-labelledby="octoberTitle"
+            hidden
+        >
+
+            <div class="celebration-card">
+
+                <span class="celebration-eyebrow">
+                    A SPECIAL DAY FOR YOU
+                </span>
+
+                <div
+                    class="celebration-sparkles"
+                    aria-hidden="true"
+                >✦　♡　✦</div>
+
+
+                <!-- Tiêu đề -->
+
+                <h2 id="octoberTitle">
+                    Chúc mừng ngày
+                    <span>20/10 ❤️</span>
+                </h2>
+
+                <p class="celebration-intro">
+                    Gửi đến cô gái đặc biệt của anh,
+                </p>
+
+                <div id="photoHeartMount"></div>
+
+
+
+                <!-- Chơi lại -->
+
+                <button
+                    type="button"
+                    id="restartCelebration"
+                    class="secondary-button"
+                >
+                    Chơi lại từ đầu ♡
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             7. CHÂN TRANG
+        =================================================== -->
+
+        <footer class="footer">
+
+            <p>
+                Made with
+                <span aria-hidden="true">♥</span>
+                just for you
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
